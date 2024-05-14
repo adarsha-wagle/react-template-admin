@@ -31,7 +31,7 @@ interface NavProps {
 export default function Nav({ openNav, onCloseNav }: NavProps) {
   const pathname = usePathname();
 
-  const upLg = useResponsive('up', 'lg', 'down');
+  const upLg = useResponsive('up', 'lg', 'xl');
 
   const userName = 'user name';
   const role = 'role';
@@ -40,7 +40,8 @@ export default function Nav({ openNav, onCloseNav }: NavProps) {
     if (openNav) {
       onCloseNav();
     }
-  }, [pathname, openNav, onCloseNav]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   const renderAccount = (
     <Box

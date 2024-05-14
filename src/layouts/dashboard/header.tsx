@@ -7,13 +7,14 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import { useResponsive } from 'src/hooks/use-responsive.ts';
 
 import { bgBlur } from 'src/theme/css.ts';
 
 import { HEADER, NAV } from './config-layout.ts';
 
-// import Searchbar from './common/searchbar.tsx';
+import Searchbar from './common/searchbar.tsx';
 import AccountPopover from './common/account-popover.tsx';
 // import LanguagePopover from './common/language-popover';
 // import NotificationsPopover from './common/notifications-popover';
@@ -33,11 +34,11 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
     <>
       {!lgUp && (
         <IconButton onClick={onOpenNav} sx={{ mr: 1 }}>
-          search icon
+          <MenuIcon />
         </IconButton>
       )}
 
-      {/* <Searchbar /> */}
+      <Searchbar />
 
       <Box sx={{ flexGrow: 1 }} />
 
@@ -48,7 +49,6 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
       </Stack>
     </>
   );
-  console.log('lg up', lgUp);
   return (
     <AppBar
       sx={{
