@@ -9,11 +9,11 @@ import IconButton from '@mui/material/IconButton';
 
 import { useResponsive } from 'src/hooks/use-responsive.ts';
 
-// import { bgBlur } from 'src/theme/css';
+import { bgBlur } from 'src/theme/css.ts';
 
 import { HEADER, NAV } from './config-layout.ts';
 
-import Searchbar from './common/searchbar.tsx';
+// import Searchbar from './common/searchbar.tsx';
 import AccountPopover from './common/account-popover.tsx';
 // import LanguagePopover from './common/language-popover';
 // import NotificationsPopover from './common/notifications-popover';
@@ -27,7 +27,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ onOpenNav }) => {
   const theme = useTheme();
 
-  const lgUp = useResponsive('up', 'lg', '');
+  const lgUp = useResponsive('up', 'lg', 'xl');
 
   const renderContent = (
     <>
@@ -37,7 +37,7 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
         </IconButton>
       )}
 
-      <Searchbar />
+      {/* <Searchbar /> */}
 
       <Box sx={{ flexGrow: 1 }} />
 
@@ -48,16 +48,18 @@ const Header: FC<HeaderProps> = ({ onOpenNav }) => {
       </Stack>
     </>
   );
-
+  console.log('lg up', lgUp);
   return (
     <AppBar
       sx={{
         boxShadow: 'none',
-        height: lgUp ? theme.spacing(HEADER.H_DESKTOP) : theme.spacing(HEADER.H_MOBILE),
+        height: lgUp
+          ? `${theme.spacing(HEADER.H_DESKTOP)}px`
+          : `${theme.spacing(HEADER.H_MOBILE)}px`,
         zIndex: theme.zIndex.appBar + 1,
-        // ...bgBlur({
-        //   color: theme.palette.background.default,
-        // }),
+        ...bgBlur({
+          color: theme.palette.background.default,
+        }),
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -20,7 +19,7 @@ import Logo from 'src/components/ui/logo.tsx';
 import Scrollbar from 'src/components/scrollbar/index.ts';
 
 import { NAV } from './config-layout.ts';
-import navConfig from './config-navigation.ts';
+import { navConfig } from './config-navigation.tsx';
 
 // ----------------------------------------------------------------------
 
@@ -32,10 +31,10 @@ interface NavProps {
 export default function Nav({ openNav, onCloseNav }: NavProps) {
   const pathname = usePathname();
 
-  const upLg = useResponsive('up', 'lg', '');
+  const upLg = useResponsive('up', 'lg', 'down');
 
-  const userName = useSelector((state: any) => state.auth.userName);
-  const role = useSelector((state: any) => state.auth.role);
+  const userName = 'user name';
+  const role = 'role';
 
   useEffect(() => {
     if (openNav) {
@@ -133,11 +132,6 @@ export default function Nav({ openNav, onCloseNav }: NavProps) {
     </Box>
   );
 }
-
-Nav.propTypes = {
-  openNav: PropTypes.bool.isRequired,
-  onCloseNav: PropTypes.func.isRequired,
-};
 
 interface NavItemProps {
   item: {

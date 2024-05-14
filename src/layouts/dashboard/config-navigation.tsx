@@ -12,7 +12,7 @@ interface NavItem {
   icon: React.ReactNode;
 }
 
-const navConfig: NavItem[] = [
+export const navConfig: NavItem[] = [
   {
     title: 'dashboard',
     path: '/',
@@ -39,5 +39,3 @@ const navConfig: NavItem[] = [
     icon: <ReportProblemIcon />,
   },
 ];
-
-export default navConfig;
