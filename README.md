@@ -9,11 +9,11 @@ This template provides a minimal setup to kickstart your projects, featuring pop
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/adarsha-wagle/react-template-client.git
+   git clone https://github.com/adarsha-wagle/react-template-admin.git
    ```
     OR
       ```bash
-   npx degit adarsha-wagle/react-template-client project_name
+   npx degit adarsha-wagle/react-template-admin project_name
    ```
 
 1. Navigate to the project directory:
@@ -58,4 +58,3 @@ This template provides a minimal setup to kickstart your projects, featuring pop
 
 ## Preview
 
-![preview](public/preview1.jpg)
