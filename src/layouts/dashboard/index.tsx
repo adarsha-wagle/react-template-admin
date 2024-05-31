@@ -14,16 +14,9 @@ export default function DashboardLayout() {
 
   useScrollToTop();
 
-  console.log('open nav', openNav);
-
   return (
     <>
-      <Header
-        onOpenNav={() => {
-          console.log('oepn nav');
-          setOpenNav(true);
-        }}
-      />
+      <Header onOpenNav={() => setOpenNav(true)} />
 
       <Box
         sx={{
