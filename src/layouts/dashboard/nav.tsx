@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/hooks/use-pathname.ts';
-// import { RouterLink } from 'src/routes/components';
+import { RouterLink } from 'src/components/router_link/router_link.tsx';
 
 import { useResponsive } from 'src/hooks/use-responsive.ts';
 
@@ -149,7 +149,7 @@ function NavItem({ item }: NavItemProps) {
 
   return (
     <ListItemButton
-      // component={RouterLink}
+      component={RouterLink}
       href={item.path}
       sx={{
         minHeight: 44,

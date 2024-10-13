@@ -1,25 +1,80 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface IAuth {
-  token: string | null;
+import { TRootState } from '../store.ts';
+
+type TAccessToken = string | null;
+
+interface IUser {
+  email?: string;
+  phoneNumber?: string;
+  role?: string;
+  name?: string;
 }
 
-// Function to fetch the initial theme mode from localStorage
+interface IUserInfoLocal extends IUser {
+  previousLoggedIn: boolean;
+}
 
-const initialState: IAuth = {
-  token: null,
+interface IUserInfo extends IUser {
+  accessToken: string;
+}
+interface IInitialState {
+  accessToken: TAccessToken;
+  userInfoLocal: IUserInfoLocal;
+  isCheckAuthLoading: boolean;
+  userInfo: IUserInfo;
+}
+
+// Checking whether the user is previously logged in or not
+const getPreviousUserInfo = () => {
+  try {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '') as IUserInfoLocal;
+    return userInfo;
+  } catch (err) {
+    return {
+      email: '',
+      phoneNumber: '',
+      previousLoggedIn: false,
+      role: '',
+      name: '',
+    };
+  }
 };
 
-const themeSlice = createSlice({
-  name: 'theme',
+const initialState: IInitialState = {
+  accessToken: null,
+  userInfoLocal: getPreviousUserInfo(),
+  userInfo: {
+    name: '',
+    email: '',
+    role: '',
+    accessToken: '',
+    phoneNumber: '',
+  },
+  isCheckAuthLoading: true,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
-      state.token = action.payload;
+    setCredentials: (state, action: PayloadAction<IUserInfo>) => {
+      state.userInfo.accessToken = action.payload.accessToken;
+    },
+    logOut: (state) => {
+      state.accessToken = null;
+    },
+    setIsCheckAuthLoading: (state, action) => {
+      state.isCheckAuthLoading = action.payload;
     },
   },
 });
 
-export const selectCurrentToken = (state: { auth: IAuth }) => state.auth.token;
+// eslint-disable-next-line
+export const { setCredentials, logOut, setIsCheckAuthLoading } = authSlice.actions;
 
-export default themeSlice.reducer;
+export default authSlice.reducer;
+
+export const selectCurrentToken = (state: TRootState) => state.auth.userInfo.accessToken;
+export const userInfoLocal = (state: TRootState) => state.auth.userInfoLocal;
+export const isCheckAuthLoading = (state: TRootState) => state.auth.isCheckAuthLoading;

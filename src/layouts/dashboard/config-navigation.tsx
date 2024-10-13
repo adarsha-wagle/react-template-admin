@@ -1,10 +1,10 @@
 import React from 'react';
 
 import EqualizerIcon from '@mui/icons-material/Equalizer';
-import DescriptionIcon from '@mui/icons-material/Description';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LoginIcon from '@mui/icons-material/Login';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
 
 interface NavItem {
   title: string;
@@ -19,20 +19,21 @@ export const navConfig: NavItem[] = [
     icon: <EqualizerIcon />,
   },
   {
-    title: 'Documents',
-    path: '/documents',
-    icon: <DescriptionIcon />,
+    title: 'Bookings',
+    path: '/booking',
+    icon: <BookmarksIcon />,
+  },
+  {
+    title: 'Contacts',
+    path: '/contact',
+    icon: <ContactsIcon />,
   },
   {
     title: 'login',
     path: '/login',
     icon: <LoginIcon />,
   },
-  {
-    title: 'register',
-    path: '/register',
-    icon: <AppRegistrationIcon />,
-  },
+
   {
     title: 'Not found',
     path: '/404',

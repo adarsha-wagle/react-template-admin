@@ -4,6 +4,6 @@ import { BASE_URL } from 'src/config/base_url.ts';
 
 export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ['Home'],
+  tagTypes: ['Contact', 'Booking'],
   endpoints: () => ({}),
 });
